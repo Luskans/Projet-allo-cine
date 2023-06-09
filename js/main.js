@@ -7,7 +7,7 @@ const movies = await reponse.json();    // transforme les données json en objec
 function generateSections(movies){     // function qui génère toute la page web
     for (let i = 0; i < movies.length; i++) {
         const movie = movies[i];
-        const sectionMovie = document.createElement("section");
+        const article = document.createElement("article");
         const b_Image_Text = document.createElement("div");
         b_Image_Text.classList.add("b_Image_Text");
         const b_Image = document.createElement("div");
@@ -33,10 +33,10 @@ function generateSections(movies){     // function qui génère toute la page we
         plotElement.innerText = movie.Plot;
 
         // Récupération de l'élément du DOM qui accueillera les fiches
-        const sectionMain = document.querySelector("main");
+        const section = document.querySelector("section");
         // Relier les balises crées au parent
-        sectionMain.appendChild(sectionMovie);
-        sectionMovie.appendChild(b_Image_Text);
+        section.appendChild(article);
+        article.appendChild(b_Image_Text);
         b_Image_Text.appendChild(b_Image);
         b_Image_Text.appendChild(b_Text);
         b_Image.appendChild(imageElement);
@@ -49,3 +49,13 @@ function generateSections(movies){     // function qui génère toute la page we
     }
 }
 generateSections(movies);
+
+/*function defilerImage() {
+    for (let i = 0; i < movies.length; i++) {
+        const movie = movies[i];
+        for (let j = 0; j < movie.Images.length; j++) {
+            imageElement.src = movie.Images[j];
+        }
+    }
+}
+setInterval(defilerImage, 2000);*/
